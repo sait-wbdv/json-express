@@ -1,9 +1,11 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const definitions = require('./definitions');
 
 const app = express();
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/definitions', function(request, response){
