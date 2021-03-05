@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/definitions', function(request, response){
+app.get('/api/v0/definitions', function(request, response){
   response.json(definitions);
 })
 
