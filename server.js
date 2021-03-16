@@ -1,20 +1,17 @@
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
-const definitions = require('./definitions');
+const endpoints = require('./routes/api/v0');
 
 const app = express();
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/api/v0/definitions', function(request, response){
-  response.json(definitions);
-})
+app.use('/api/v0',endpoints);
 
 app.use(function(req, res, next) {
-  res.status(404);
-  res.send('404: File Not Found');
+  res.sendStatus(404);
 });
 
 const PORT = process.env.PORT || 3000;
